@@ -1,9 +1,12 @@
 #include "hessian_free.hpp"
 #include "nesterov.hpp"
 #include "bfgs.hpp"
+#include "bfgs2.hpp"
 #include "dfp.hpp"
 #include "dfp2.hpp"
 #include "powell.hpp"
+#include "powell2.hpp"
+#include "powell21.hpp"
 #include <fstream>
 #include "AdaMax.h"
 #include "Adam.h"
@@ -1528,6 +1531,14 @@ int main() {
     fout_txt.close();
 
     std::cout << std::endl;
+    std::cout << "-- Start BFGS2 Method Tests. Results in test_bfgs2.txt" << std::endl;
+    std::cout << "-- Tests: ";
+    fout_txt.open("test_bfgs2.txt");
+    fout_txt << "BFGS_2 method:\n\n";
+    Test(bfgs2);
+    fout_txt.close();
+
+    std::cout << std::endl;
     std::cout << "-- Start DFP Method Tests. Results in test_dfp.txt" << std::endl;
     std::cout << "-- Tests: ";
     fout_txt.open("test_dfp.txt");
@@ -1551,6 +1562,22 @@ int main() {
     Test(powell);
     fout_txt.close();
     
+    std::cout << std::endl;
+    std::cout << "-- Start powell2 Method Tests. Results in test_powell2.txt" << std::endl;
+    std::cout << "-- Tests: ";
+    fout_txt.open("test_powell2.txt");
+    fout_txt << "powell2 method:\n\n";
+    Test(powell2);
+    fout_txt.close();
+
+    std::cout << std::endl;
+    std::cout << "-- Start powell21 Method Tests. Results in test_powell21.txt" << std::endl;
+    std::cout << "-- Tests: ";
+    fout_txt.open("test_powell21.txt");
+    fout_txt << "powell21 method:\n\n";
+    Test(powell21);
+    fout_txt.close();
+
     std::cout << std::endl;
     std::cout << "-- Start Hessian Free Method Tests. Results in test_hessianfree.txt" << std::endl;
     std::cout << "-- Tests: ";
@@ -1627,9 +1654,12 @@ int main() {
     std::cout << std::endl;
     std::cout << "-- Finish testing... The results are written to a files:\n";
     std::cout << "\t * test_bfgs.txt\n";
+    std::cout << "\t * test_bfgs2.txt\n";
     std::cout << "\t * test_dfp.txt\n";
     std::cout << "\t * test_dfp2.txt\n";
     std::cout << "\t * test_powell.txt\n";
+    std::cout << "\t * test_powell2.txt\n";
+    std::cout << "\t * test_powell21.txt\n";
     std::cout << "\t * test_hessianfree.txt\n";
     std::cout << "\t * test_nesterov.txt\n";
     std::cout << "\t * test_AdaMax.txt\n";
